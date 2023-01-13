@@ -19,7 +19,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class AminActivity extends AppCompatActivity {
-    TextView txtSumViewsAdminView, txtSumHostsAdminView, txtSumRoomsAdminView;
+    TextView  txtSumHostsAdminView, txtSumRoomsAdminView;
 
     LinearLayout lnLtRoomsAdminView, lnLtHostsAdminView, lnLtReportsAdminView, lnLtRoomsWaitForApprovalAdminView;
     DatabaseReference RoomRef, UserRef;
@@ -32,6 +32,13 @@ public class AminActivity extends AppCompatActivity {
         setContentView(R.layout.activity_amin);
         initControl();
         readUser();
+        lnLtRoomsAdminView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AminActivity.this,AllRoomActivity.class);
+                startActivity(intent);
+            }
+        });
         lnLtRoomsWaitForApprovalAdminView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

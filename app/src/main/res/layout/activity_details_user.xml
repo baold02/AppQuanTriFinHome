@@ -68,36 +68,8 @@
             android:text="Số điện thoại : "
             android:textColor="@color/black" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_marginHorizontal="16dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="16dp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:gravity="center_vertical"
-                android:text="Giỏ Hàng : "
-                android:textColor="@color/black" />
 
-            <TextView
-                android:id="@+id/tvGioHang"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center_vertical"
-                android:text=" 3 sản phẩm (Nhấn để xem chi tiết)"
-                android:textColor="@color/black" />
-
-        </LinearLayout>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:layout_marginTop="8dp"
-            android:layout_marginHorizontal="16dp"
-            android:id="@+id/rcvGioHang"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
 
         <LinearLayout
             android:layout_marginHorizontal="16dp"
@@ -166,6 +138,21 @@
 
         </LinearLayout>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Phòng đã đăng"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvRoom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:nestedScrollingEnabled="false"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/alert"
+            tools:listitem="@layout/item_room2" />
 
     </LinearLayout>
 

@@ -38,7 +38,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
                     android:layout_marginTop="10dp"
-                    android:background="#6F42C1"
+                    android:background="@color/teal_700"
                     android:orientation="horizontal">
 
                     <ImageView
@@ -74,7 +74,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="a month"
+                            android:text="Đã  tạo"
                             android:textColor="#FFFFFF"
                             android:textSize="14sp" />
                     </LinearLayout>
@@ -84,7 +84,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
                     android:layout_marginTop="10dp"
-                    android:background="#FF6347"
+                    android:background="@color/teal_700"
                     android:orientation="horizontal">
 
                     <ImageView
@@ -120,7 +120,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="a month"
+                            android:text="  Đã đăng"
                             android:textColor="#FFFFFF"
                             android:textSize="14sp" />
                     </LinearLayout>
