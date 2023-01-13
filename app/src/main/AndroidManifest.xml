@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.appq" >
+    package="com.example.appq">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -15,9 +15,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppQuanTriFinHome"
         android:usesCleartextTraffic="true"
-        tools:targetApi="31" >
+        tools:targetApi="31">
         <activity
-            android:name=".Activity.LoginActivity"
+            android:name=".Activity.EditAcountActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.AcountAdminActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.AminActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,13 +32,14 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".Activity.LoginActivity"
+            android:exported="true" />
+        <activity
             android:name=".Activity.DetailsUserActivity"
             android:exported="false" />
         <activity
             android:name=".Activity.MainActivity"
-            android:exported="true" >
-
-        </activity>
+            android:exported="true" />
     </application>
 
 </manifest>
