@@ -152,41 +152,4 @@ public class UserDao {
     }
 
 
-//    public void getGioHangOfUser(User user, IAfterGetAllObject iAfterGetAllObject) {
-//        FirebaseDatabase.getInstance().getReference().child("user").child(user.getUsername())
-//                .child("gio_hang").get().addOnCompleteListener(task -> {
-//            if (task.isSuccessful()) {
-//                DataSnapshot dataSnapshot = task.getResult();
-//                List<GioHang> gioHangList = new ArrayList<>();
-//                if (dataSnapshot != null) {
-//                    for (DataSnapshot data : dataSnapshot.getChildren()) {
-//                        GioHang gioHang = data.getValue(GioHang.class);
-//                        gioHangList.add(gioHang);
-//                    }
-//                }
-//                iAfterGetAllObject.iAfterGetAllObject(gioHangList);
-//            }
-//
-//        });
-//
-//    }
-
-
-//    public void getSanPhamYeuThichOfUser(User user, IAfterGetAllObject iAfterGetAllObject) {
-//        FirebaseDatabase.getInstance().getReference()
-//                .child("user").child(user.getUsername()).child("ma_sp_da_thich")
-//                .get().addOnCompleteListener(task -> {
-//                    if (task.isSuccessful()) {
-//                        DataSnapshot snapshot = task.getResult();
-//                        if(snapshot != null) {
-//                            List<String> sanPhamYeuThichList = new ArrayList<>();
-//                            for (DataSnapshot data : snapshot.getChildren()) {
-//                                String maSP = data.getValue(String.class);
-//                                sanPhamYeuThichList.add(maSP);
-//                            }
-//                            iAfterGetAllObject.iAfterGetAllObject(sanPhamYeuThichList);
-//                        }
-//                    }
-//                });
-//    }
 }

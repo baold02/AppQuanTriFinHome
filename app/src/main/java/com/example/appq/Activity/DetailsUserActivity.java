@@ -1,26 +1,23 @@
-package com.example.appq;
+package com.example.appq.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.text.Html;
-import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
+import com.example.appq.R;
 import com.example.appq.dao.UserDao;
 import com.example.appq.interface_.IAfterGetAllObject;
 import com.example.appq.interface_.IAfterUpdateObject;
 import com.example.appq.model.UserModel;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.squareup.picasso.Picasso;
-
-import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -37,6 +34,7 @@ public class DetailsUserActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private RecyclerView rcvGioHang;
     private RecyclerView rcvSanPhamYT;
+    DatabaseReference reference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,7 +85,6 @@ public class DetailsUserActivity extends AppCompatActivity {
         } else {
             tvDiaChi.setText("Chưa cập nhật");
         }
-
 
 
         if (user.isEnable()) {

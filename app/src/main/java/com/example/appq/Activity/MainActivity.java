@@ -1,18 +1,16 @@
-package com.example.appq;
+package com.example.appq.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Toast;
-import android.widget.ToggleButton;
 
+import com.example.appq.R;
 import com.example.appq.adapter.UserAdapter;
 import com.example.appq.dao.UserDao;
 import com.example.appq.interface_.IAfterGetAllObject;
@@ -21,7 +19,6 @@ import com.example.appq.interface_.OnClickItem;
 import com.example.appq.interface_.OnLockUser;
 import com.example.appq.model.UserModel;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseError;
 
 import java.util.ArrayList;
@@ -87,11 +84,7 @@ public class MainActivity extends AppCompatActivity implements OnClickItem, OnLo
         bundle.putString("id", user.getUserID());
        intent.putExtras(bundle);
        startActivity(intent);
-//        fragment.setArguments(bundle);
-//        requireActivity().getSupportFragmentManager()
-//                .beginTransaction().replace(R.id.contentFrame, fragment)
-//                .addToBackStack(null)
-//                .commit();
+
     }
 
     @Override

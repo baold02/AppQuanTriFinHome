@@ -16,14 +16,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.chauthai.swipereveallayout.SwipeRevealLayout;
 import com.chauthai.swipereveallayout.ViewBinderHelper;
-import com.example.appq.MainActivity;
 import com.example.appq.R;
-import com.example.appq.dao.UserDao;
-import com.example.appq.interface_.IAfterUpdateObject;
 import com.example.appq.interface_.OnClickItem;
 import com.example.appq.interface_.OnLockUser;
 import com.example.appq.model.UserModel;
-import com.google.firebase.database.DatabaseError;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -61,11 +61,11 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
         }
         viewBinderHelper.bind(holder.item, String.valueOf(user.getUserID()));
 
-        if(user.isEnable()) {
-            holder.tvLock.setText("Lock");
-        } else {
-            holder.tvLock.setText("Unlock");
-        }
+//        if(user.isEnable()) {
+//            holder.tvLock.setText("Lock");
+//        } else {
+//            holder.tvLock.setText("Unlock");
+//        }
         holder.tvUserName.setText("UserName : " + user.getName());
         holder.tvSoDienThoai.setText("SĐT : " + user.getPhoneNumber());
         if(user.getAddress() != null && user.getAddress().length() > 0) {
@@ -92,16 +92,19 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
         holder.tvLock.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(user.isEnable()) {
-                    user.setEnable(false);
-                    userList.set(position,user);
-                    notifyDataSetChanged();
-                } else {
-                   user.setEnable(true);
-                    userList.set(position,user);
-                    notifyDataSetChanged();
-                }
-                onLockUser.onLock(user);
+                DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
+                    reference.child(user.getUserID()).removeValue()
+                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if (task.isSuccessful()) {
+                                        Toast.makeText(view.getContext(), "Đã xóa tài khoản", Toast.LENGTH_SHORT).show();
+                                        notifyDataSetChanged();
+                                    }
+                                }
+                            });
+
+
             }
         });
     }
