@@ -46,9 +46,7 @@ public class AcountAdminActivity extends AppCompatActivity {
     private void initView() {
         toolbar = findViewById(R.id.toolbar);
         tvChinhSuaTaiKhoan = findViewById(R.id.tvChinhSuaTaiKhoan);
-        tvXemTaiKhoan = findViewById(R.id.tvXemTaiKhoan);
         tvLogOut = findViewById(R.id.tvLogOut);
-        cardview = findViewById(R.id.cardview);
 
     }
 }

@@ -50,6 +50,11 @@ public class RoomHostAdapter extends RecyclerView.Adapter<RoomHostAdapter.ViewHo
         this.iClickItemUserListener = listener;
         notifyDataSetChanged();
     }
+    public RoomHostAdapter(Context context, List<RoomModel> roomModelList) {
+        this.context = context;
+        this.roomModelList = roomModelList;
+        notifyDataSetChanged();
+    }
 
     @NonNull
     @Override

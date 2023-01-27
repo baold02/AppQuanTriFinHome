@@ -199,7 +199,6 @@ public class DetailsUserActivity extends AppCompatActivity {
                 UserDao.getInstance().updateUser(user, user.toMapLock(), new IAfterUpdateObject() {
                     @Override
                     public void onSuccess(Object obj) {
-//                        OverUtils.makeToast(getContext(), "Khóa thành công user");
                         Toast.makeText(DetailsUserActivity.this, "Khóa thành công user", Toast.LENGTH_SHORT).show();
                     }
 
@@ -214,7 +213,6 @@ public class DetailsUserActivity extends AppCompatActivity {
                 UserDao.getInstance().updateUser(user, user.toMapLock(), new IAfterUpdateObject() {
                     @Override
                     public void onSuccess(Object obj) {
-//                        OverUtils.makeToast(getContext(), "Mở khóa thành công user");
                         Toast.makeText(DetailsUserActivity.this, "Mở khóa thành công user", Toast.LENGTH_SHORT).show();
                     }
 
