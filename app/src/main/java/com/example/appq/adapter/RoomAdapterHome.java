@@ -119,7 +119,7 @@ public class RoomAdapterHome extends RecyclerView.Adapter<RoomAdapterHome.RoomVi
             tvAddress = itemView.findViewById(R.id.tvDiaChi);
             tvPrice = itemView.findViewById(R.id.tvGia);
             tvName = itemView.findViewById(R.id.tvName);
-            tvTime = itemView.findViewById(R.id.tvNgayDang);
+//            tvTime = itemView.findViewById(R.id.tvNgayDang);
             container = itemView.findViewById(R.id.linearHome);
         }
     }

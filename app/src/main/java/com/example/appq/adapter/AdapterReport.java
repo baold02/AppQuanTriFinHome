@@ -14,7 +14,9 @@ import androidx.appcompat.widget.AppCompatImageView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.appq.Activity.ReportActivity;
 import com.example.appq.R;
+import com.example.appq.model.Report;
 import com.example.appq.model.RoomModel;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -27,11 +29,12 @@ import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 public class AdapterReport extends RecyclerView.Adapter<AdapterReport.HolderRoomFavorite> {
     private Context  context;
     private ArrayList<RoomModel> roomModels;
-
     public AdapterReport(Context context, ArrayList<RoomModel> roomModels) {
         this.context = context;
         this.roomModels = roomModels;
@@ -40,14 +43,35 @@ public class AdapterReport extends RecyclerView.Adapter<AdapterReport.HolderRoom
     @NonNull
     @Override
     public HolderRoomFavorite onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_room2, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_room_home, parent, false);
         return new HolderRoomFavorite(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull HolderRoomFavorite holder, int position) {
       RoomModel roomModel = roomModels.get(position);
+      List<Report> report = new ArrayList<>();
+        Report report1 = new Report();
 
+      DatabaseReference  databaseReference = FirebaseDatabase.getInstance().getReference("Report");
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    Report idRoom = dataSnapshot.getValue(Report.class);
+                    assert idRoom != null;
+                    if (Objects.equals(idRoom.getIdRoom(),roomModel.getId())) {
+                        String report = "" + dataSnapshot.child("report").getValue();
+                        holder.tvBc.setText(report);
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.e("TAG", "onCancelled: " + error.getMessage());
+            }
+        });
       loadRoom(roomModel,holder);
 //        holder.btnFavorite.setOnClickListener(v -> {
 //            //add favorite | xóa favorite
@@ -104,6 +128,8 @@ public class AdapterReport extends RecyclerView.Adapter<AdapterReport.HolderRoom
                         holder.tvPrice.setText(roomPrice);
                         holder.tvAddress.setText(roomAdr);
                         Picasso.get().load(roomImg).into(holder.imgRoom);
+
+
                     }
 
                     @Override
@@ -121,14 +147,15 @@ public class AdapterReport extends RecyclerView.Adapter<AdapterReport.HolderRoom
     class HolderRoomFavorite extends RecyclerView.ViewHolder{
         private ConstraintLayout container;
         private AppCompatImageView imgRoom;
-        private TextView tvName, tvPrice, tvAddress;
+        private TextView tvName, tvPrice, tvAddress, tvBc;
         private AppCompatCheckBox btnFavorite;
         public HolderRoomFavorite(@NonNull View itemView) {
             super(itemView);
-            imgRoom = itemView.findViewById(R.id.imgRoom);
-            tvAddress = itemView.findViewById(R.id.tvAddressRoom);
-            tvPrice = itemView.findViewById(R.id.tvPrice);
-            tvName = itemView.findViewById(R.id.tvNameRoom);
+            imgRoom = itemView.findViewById(R.id.imgHome);
+            tvAddress = itemView.findViewById(R.id.tvDiaChi);
+            tvPrice = itemView.findViewById(R.id.tvGia);
+            tvName = itemView.findViewById(R.id.tvName);
+            tvBc = itemView.findViewById(R.id.tvBc);
 
         }
     }
