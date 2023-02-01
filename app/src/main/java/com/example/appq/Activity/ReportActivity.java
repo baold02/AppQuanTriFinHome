@@ -33,7 +33,7 @@ public class ReportActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_report);
         rvRepotr = findViewById(R.id.rvReport);
-        textView = findViewById(R.id.tbBcc);
+//        textView = findViewById(R.id.tbBcc);
         loadFavorite();
 
     }
@@ -50,7 +50,6 @@ public class ReportActivity extends AppCompatActivity {
                             String roomId = "" + dataSnapshot.child("idRoom").getValue();
                             String report = "" + dataSnapshot.child("report").getValue();
                             Log.e("Tag","aaa:"+report);
-                            textView.setText(report);
 
                             RoomModel roomModel = new RoomModel();
                             roomModel.setId(roomId);
