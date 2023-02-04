@@ -46,7 +46,6 @@ public class DetailsUserActivity extends AppCompatActivity {
     private TextView tvHoatDong;
     private ToggleButton btnEnable;
     private Toolbar toolbar;
-    private RecyclerView rcvGioHang;
     private RecyclerView rcvSanPhamYT;
     DatabaseReference RoomRef, UserRef;
     private int countRoom = 0;
@@ -116,7 +115,7 @@ public class DetailsUserActivity extends AppCompatActivity {
     }
 
     private  void onClickGoToDetail(RoomModel roomModel){
-            Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, MainActivity.class);
         Bundle bundle = new Bundle();
         bundle.putSerializable("Room", roomModel);
         intent.putExtras(bundle);

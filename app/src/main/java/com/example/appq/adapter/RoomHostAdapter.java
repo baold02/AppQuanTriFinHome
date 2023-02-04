@@ -16,6 +16,7 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -76,6 +77,10 @@ public class RoomHostAdapter extends RecyclerView.Adapter<RoomHostAdapter.ViewHo
 
             holder.tvPrice.setText(currencyFormat.format(Integer.parseInt (roomModel.getPrice())) + " VNĐ/Phòng");
         }
+
+        if (roomModel.isBrowser() == false) {
+           holder.tvTrangThai.setText("Chưa Xác thực");
+        }
         holder.tvAddress.setText(roomModel.getAddress());
         Picasso.get().load(roomModel.getImg()).placeholder(R.mipmap.ic_launcher).into(holder.imgRoom);
 
@@ -87,9 +92,9 @@ public class RoomHostAdapter extends RecyclerView.Adapter<RoomHostAdapter.ViewHo
             notifyDataSetChanged();
             }
         });
-//        holder.container.setOnClickListener(v -> {
-//            iClickItemUserListener.onClickItemRoom(roomModel);
-//        });
+        holder.container.setOnClickListener(v -> {
+            iClickItemUserListener.onClickItemRoom(roomModel);
+        });
 
 
     }
@@ -133,7 +138,8 @@ public class RoomHostAdapter extends RecyclerView.Adapter<RoomHostAdapter.ViewHo
     public class ViewHolder extends RecyclerView.ViewHolder{
         private LinearLayout container;
         private AppCompatImageView imgRoom;
-        private TextView tvName, tvPrice, tvAddress;
+        private TextView tvName, tvPrice, tvAddress,tvTrangThai;
+        private ToggleButton btnEnable;
         private ImageButton btnDelete;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -143,6 +149,7 @@ public class RoomHostAdapter extends RecyclerView.Adapter<RoomHostAdapter.ViewHo
             tvName = itemView.findViewById(R.id.tvNameRoom);
             btnDelete = itemView.findViewById(R.id.btnDelete);
             container = itemView.findViewById(R.id.containerRoom);
+            tvTrangThai = itemView.findViewById(R.id.tvTrangThai);
         }
     }
 }

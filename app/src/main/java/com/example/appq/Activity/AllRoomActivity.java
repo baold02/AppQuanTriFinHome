@@ -41,11 +41,14 @@ public class AllRoomActivity extends AppCompatActivity {
                 mRoomModel.clear();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     RoomModel roomModel = dataSnapshot.getValue(RoomModel.class);
-                    mRoomModel.add(roomModel);
-                    roomAdapter = new RoomHostAdapter(AllRoomActivity.this, mRoomModel, roomModel1 -> onClickGoToDetail(roomModel1));
+                    if (roomModel.isBrowser() == false){
+                        mRoomModel.add(roomModel);
+                        roomAdapter = new RoomHostAdapter(AllRoomActivity.this, mRoomModel, roomModel1 -> onClickGoToDetail(roomModel1));
 //                    RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(AllRoomActivity.this);
 //                    recyclerView.setLayoutManager(mLayoutManager);
-                    recyclerView.setAdapter(roomAdapter);
+                        recyclerView.setAdapter(roomAdapter);
+                    }
+
 
                 }
 //                    loaderDialog.dismiss();
@@ -59,7 +62,7 @@ public class AllRoomActivity extends AppCompatActivity {
         });
     }
     private  void onClickGoToDetail(RoomModel roomModel){
-        Intent intent = new Intent(AllRoomActivity.this, MainActivity.class);
+        Intent intent = new Intent(AllRoomActivity.this, ChiTietRoomActivity.class);
         Bundle bundle = new Bundle();
         bundle.putSerializable("Room", roomModel);
         intent.putExtras(bundle);
