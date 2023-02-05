@@ -169,7 +169,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="5dp"
-                            android:text="Phòng đăng"
+                            android:text="Duyệt Phòng"
                             android:textAlignment="center"
                             android:textSize="14sp"
                             android:textStyle="bold" />
@@ -257,6 +257,31 @@
                             android:textStyle="bold" />
                     </LinearLayout>
                 </TableRow>
+
+                <LinearLayout
+                    android:id="@+id/lnLt_rooms_wait_for_approval_admin_view"
+                    android:layout_width="100dp"
+                    android:layout_height="90dp"
+                    android:background="@drawable/custom_profile"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:tint="@color/teal_700"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="20dp"
+                        android:src="@drawable/ic_account_circle_24" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="Tài khoản"
+                        android:textAlignment="center"
+                        android:textSize="14dp"
+                        android:textStyle="bold" />
+                </LinearLayout>
             </TableLayout>
         </LinearLayout>
     </ScrollView>

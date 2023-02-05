@@ -68,8 +68,7 @@ public class ChiTietRoomActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(Object obj) {
                         Toast.makeText(ChiTietRoomActivity.this, "Đã Duyệt Phòng", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(ChiTietRoomActivity.this,AllRoomActivity.class);
-                        startActivity(intent);
+                        onBackPressed();
                     }
 
                     @Override

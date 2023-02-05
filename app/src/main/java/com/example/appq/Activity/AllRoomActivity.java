@@ -44,14 +44,11 @@ public class AllRoomActivity extends AppCompatActivity {
                     if (roomModel.isBrowser() == false){
                         mRoomModel.add(roomModel);
                         roomAdapter = new RoomHostAdapter(AllRoomActivity.this, mRoomModel, roomModel1 -> onClickGoToDetail(roomModel1));
-//                    RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(AllRoomActivity.this);
-//                    recyclerView.setLayoutManager(mLayoutManager);
                         recyclerView.setAdapter(roomAdapter);
                     }
 
 
                 }
-//                    loaderDialog.dismiss();
 
             }
 
