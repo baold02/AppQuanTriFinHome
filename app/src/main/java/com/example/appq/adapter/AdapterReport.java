@@ -54,8 +54,6 @@ public class AdapterReport extends RecyclerView.Adapter<AdapterReport.HolderRoom
     @Override
     public void onBindViewHolder(@NonNull HolderRoomFavorite holder, int position) {
       RoomModel roomModel = roomModels.get(position);
-      List<Report> report = new ArrayList<>();
-        Report report1 = new Report();
 
       DatabaseReference  databaseReference = FirebaseDatabase.getInstance().getReference("Report");
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -80,6 +78,36 @@ public class AdapterReport extends RecyclerView.Adapter<AdapterReport.HolderRoom
         holder.imgXoa.setOnClickListener(v -> {
             //add favorite | xóa favorite
             deleteRoom(roomModel);
+        });
+
+
+        holder.imgHuy.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                DatabaseReference  databaseReference1 = FirebaseDatabase.getInstance().getReference("Report");
+                databaseReference1.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                            Report idRoom = dataSnapshot.getValue(Report.class);
+                            Log.e("tag","aaa:"+idRoom.getIdReport());
+                            assert idRoom != null;
+                            databaseReference1.child(idRoom.getIdReport()).removeValue();
+                            Toast.makeText(context, "Bỏ qua", Toast.LENGTH_SHORT).show();
+
+                        }
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        Log.e("TAG", "onCancelled: " + error.getMessage());
+                    }
+                });
+
+            }
         });
     }
 
@@ -157,7 +185,7 @@ public class AdapterReport extends RecyclerView.Adapter<AdapterReport.HolderRoom
 
     class HolderRoomFavorite extends RecyclerView.ViewHolder{
         private ConstraintLayout container;
-        private AppCompatImageView imgRoom, imgXoa;
+        private AppCompatImageView imgRoom, imgXoa, imgHuy;
         private TextView tvName, tvPrice, tvAddress, tvBc;
         private AppCompatCheckBox btnFavorite;
         public HolderRoomFavorite(@NonNull View itemView) {
@@ -168,6 +196,7 @@ public class AdapterReport extends RecyclerView.Adapter<AdapterReport.HolderRoom
             tvName = itemView.findViewById(R.id.tvName);
             tvBc = itemView.findViewById(R.id.tvBc);
             imgXoa = itemView.findViewById(R.id.imgXoa);
+            imgHuy = itemView.findViewById(R.id.imgHuy);
 
         }
     }

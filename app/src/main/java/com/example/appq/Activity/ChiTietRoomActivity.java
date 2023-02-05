@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
@@ -15,10 +17,16 @@ import com.example.appq.interface_.IAfterUpdateObject;
 import com.example.appq.model.RoomModel;
 import com.example.appq.model.UserModel;
 import com.google.firebase.database.DatabaseError;
+import com.squareup.picasso.Picasso;
+
+import java.text.NumberFormat;
+import java.util.Locale;
 
 public class ChiTietRoomActivity extends AppCompatActivity {
     RoomModel roomModel;
     private Button btnEnable;
+    private TextView tvName,tvDiaChi,tvGia,tvMota;
+    ImageView imgPhong;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +39,26 @@ public class ChiTietRoomActivity extends AppCompatActivity {
         }
         roomModel = (RoomModel) bundle.get("Room");
         setUpTongButton(roomModel);
+        initView();
+    }
+
+    private void initView(){
+        tvName = findViewById(R.id.tvNameDuyet);
+        tvDiaChi = findViewById(R.id.tvDT);
+        tvGia = findViewById(R.id.tvGiaDuyet);
+        tvMota = findViewById(R.id.tvMoTaD);
+        imgPhong = findViewById(R.id.imgDuyetP);
+
+
+        Picasso.get().load(roomModel.getImg()).into(imgPhong);
+        tvName.setText(roomModel.getName());
+        tvDiaChi.setText(roomModel.getAddress());
+        tvMota.setText(roomModel.getDescription());
+        Locale locale = new Locale("vi", "VN");
+        NumberFormat currencyFormat = NumberFormat.getNumberInstance(locale);
+        if (roomModel.getPrice() != null){
+            tvGia.setText(currencyFormat.format(Integer.parseInt (roomModel.getPrice())) + " VNĐ/Phòng");
+        }
     }
 
     private void setUpTongButton(RoomModel user) {

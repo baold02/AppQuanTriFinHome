@@ -10,23 +10,14 @@
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/imgRoom"
             android:layout_width="100dp"
-            android:layout_height="130dp"
+            android:scaleType="fitXY"
+            android:layout_height="match_parent"
             />
 
        <LinearLayout
            android:layout_width="wrap_content"
            android:orientation="vertical"
            android:layout_height="wrap_content">
-           <TextView
-               android:layout_marginStart="10dp"
-               android:id="@+id/tvTrangThai"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:text="xác thực"
-               android:textColor="@color/red"
-               android:textSize="15dp"
-               />
-
 
 
            <TextView
@@ -40,8 +31,18 @@
                    android:text="Phòng trọ sinh viên, có gác xép"
                    android:textSize="16dp"
                    android:textColor="@color/cardview_dark_background" />
+           <TextView
+               android:layout_marginStart="10dp"
+               android:id="@+id/tvTrangThai"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="xác thực"
+               android:textColor="@color/red"
+               android:textSize="15dp"
+               />
 
-               <TextView
+
+           <TextView
                    android:layout_marginStart="10dp"
                    android:id="@+id/tvPrice"
                    android:layout_width="wrap_content"
